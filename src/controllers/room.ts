@@ -41,8 +41,7 @@ export const createOneRoom: RequestHandler = async (req, res, next) => {
         const {
             name,
             description,
-            imageUrl,
-            imageUrlList,
+            imageList,
             areaInfo,
             bedInfo,
             maxPeople,
@@ -55,8 +54,7 @@ export const createOneRoom: RequestHandler = async (req, res, next) => {
         const result = await RoomModel.create({
             name,
             description,
-            imageUrl,
-            imageUrlList,
+            imageList,
             areaInfo,
             bedInfo,
             maxPeople,
@@ -80,8 +78,7 @@ export const updateRoomById: RequestHandler = async (req, res, next) => {
         const {
             name,
             description,
-            imageUrl,
-            imageUrlList,
+            imageList,
             areaInfo,
             bedInfo,
             maxPeople,
@@ -96,8 +93,7 @@ export const updateRoomById: RequestHandler = async (req, res, next) => {
             {
                 name,
                 description,
-                imageUrl,
-                imageUrlList,
+                imageList,
                 areaInfo,
                 bedInfo,
                 maxPeople,
