@@ -2,11 +2,16 @@ import { Schema, model, type Document } from 'mongoose';
 import validator from 'validator';
 import itemSchema, { IItem } from './schema/item';
 
+export interface ImageList {
+    url: string;
+    mobileUrl: string;
+    alt: string;
+}
+
 export interface IRoom extends Document {
     name: string;
     description: string;
-    imageUrl: string;
-    imageUrlList: string[];
+    imageList: ImageList[];
     areaInfo: string;
     bedInfo: string;
     maxPeople: number;
@@ -28,25 +33,30 @@ const roomSchema = new Schema<IRoom>(
             type: String,
             required: [true, 'description 未填寫']
         },
-        imageUrl: {
-            type: String,
-            required: [true, 'imageUrl 未填寫'],
-            validate: {
-                validator(value: string) {
-                    return validator.isURL(value, { protocols: ['https'] });
-                },
-                message: 'imageUrl 格式不正確'
-            }
-        },
-        imageUrlList: [
+        imageList: [
             {
-                type: String,
-                trim: true,
-                validate: {
-                    validator(value: string) {
-                        return validator.isURL(value, { protocols: ['https'] });
-                    },
-                    message: 'imageUrlList 格式不正確'
+                url: {
+                    type: String,
+                    trim: true,
+                    validate: {
+                        validator(value: string) {
+                            return validator.isURL(value, { protocols: ['https'] });
+                        },
+                        message: 'imageList.url 格式不正確'
+                    }
+                },
+                mobileUrl: {
+                    type: String,
+                    trim: true,
+                    validate: {
+                        validator(value: string) {
+                            return validator.isURL(value, { protocols: ['https'] });
+                        },
+                        message: 'imageList.mobileUrl 格式不正確'
+                    }
+                },
+                alt: {
+                    type: String,
                 }
             }
         ],

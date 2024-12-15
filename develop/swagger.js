@@ -55,8 +55,13 @@ const doc = {
         RoomBody: {
             name: '尊爵雙人房',
             description: '享受高級的住宿體驗，尊爵雙人房提供給您舒適寬敞的空間和精緻的裝潢。',
-            imageUrl: 'https://fakeimg.pl/300/',
-            imageUrlList: ['https://fakeimg.pl/300/', 'https://fakeimg.pl/300/', 'https://fakeimg.pl/300/'],
+            imageList: [
+                { 
+                    url: 'https://fakeimg.pl/300/',
+                    mobileUrl: 'https://fakeimg.pl/300/',
+                    alt: '尊爵雙人房圖片一'
+                }
+            ],
             areaInfo: '24坪',
             bedInfo: '一張大床',
             maxPeople: 4,
@@ -68,8 +73,13 @@ const doc = {
         RoomResponses: {
             name: '尊爵雙人房',
             description: '享受高級的住宿體驗，尊爵雙人房提供給您舒適寬敞的空間和精緻的裝潢。',
-            imageUrl: 'https://fakeimg.pl/300/',
-            imageUrlList: ['https://fakeimg.pl/300/', 'https://fakeimg.pl/300/', 'https://fakeimg.pl/300/'],
+            imageList: [
+                { 
+                    url: 'https://fakeimg.pl/300/',
+                    mobileUrl: 'https://fakeimg.pl/300/',
+                    alt: '尊爵雙人房圖片一'
+                }
+            ],
             areaInfo: '24坪',
             bedInfo: '一張大床',
             maxPeople: 4,
