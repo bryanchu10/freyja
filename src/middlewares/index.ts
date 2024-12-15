@@ -46,7 +46,24 @@ export const isAdmin: RequestHandler = async (req, res, next) => {
             }
         }
      */
-    isAuth(req, res, next);
+    // isAuth(req, res, next);
+    try {
+        await new Promise<void>((resolve, reject) => {
+            isAuth(req, res, (error) => {
+                if (error) {
+                    reject(error);
+                }
+                resolve();
+            });
+        });
+        if (req.user?.role !== 'admin') {
+            throw createHttpError(403, '權限不足');
+        }
+
+        next();
+    } catch (error) {
+        next(error);
+    }
 };
 
 export const checkRequestBodyValidator: RequestHandler = (req, _res, next) => {

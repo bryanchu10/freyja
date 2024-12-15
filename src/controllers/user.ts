@@ -19,7 +19,8 @@ export const signup: RequestHandler = async (req, res, next) => {
             phone,
             birthday,
             address,
-            password: await bcrypt.hash(password, 6)
+            password: await bcrypt.hash(password, 6),
+            role: 'user'
         });
         const { password: _, ...result } = _result.toObject();
 

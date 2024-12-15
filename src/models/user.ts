@@ -2,6 +2,11 @@ import { Schema, model, type Document } from 'mongoose';
 import validator from 'validator';
 import ZipCodeMap, { zipCodeList } from '@/utils/zipcodes';
 
+export enum Role {
+    ADMIN = 'admin',
+    USER = 'user'
+}
+
 export interface IUser extends Document {
     name: string;
     email: string;
@@ -15,6 +20,7 @@ export interface IUser extends Document {
         city: string;
     };
     verificationToken: string;
+    role: Role;
 }
 
 const userSchema = new Schema<IUser>(
@@ -72,6 +78,11 @@ const userSchema = new Schema<IUser>(
             type: String,
             default: '',
             select: false
+        },
+        role: {
+            type: String,
+            enum: [Role.ADMIN, Role.USER],
+            default: Role.USER
         }
     },
     {
